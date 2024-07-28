@@ -1,6 +1,5 @@
-// src/components/molecules/NavItem.js
 import React from 'react';
-import { Link } from 'react-router-dom'; // Si usas react-router para navegación
+import { Link } from 'react-router-dom';
 
 const NavItem = ({ label, to }) => (
   <Link to={to}>

@@ -30,16 +30,16 @@ const SliderPets = () => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative w-full 2xl:w-[80%] mx-auto">
       {slides.map((slide, index) => (
         <div
           key={slide.id}
-          className={`container mx-auto transition-opacity duration-500 ${currentSlide === index ? 'opacity-100' : 'opacity-0'} ${
+          className={`w-full mx-auto transition-opacity duration-500 ${currentSlide === index ? 'opacity-100' : 'opacity-0'} ${
             currentSlide === index ? 'block' : 'hidden'
           }`}
         >
           <div
-            className="bg-cover bg-center h-auto text-white py-24 px-10"
+            className="bg-cover bg-center h-auto text-white py-24 px-10 w-full"
             style={{ backgroundImage: `url(${slide.image})` }}
           >
             <div className="md:w-1/2">
@@ -54,7 +54,7 @@ const SliderPets = () => {
         </div>
       ))}
 
-      <div className="flex justify-between w-12 mx-auto pb-2">
+      <div className="flex justify-between w-12 pt-5 mx-auto pb-2 ">
         {slides.map((slide, index) => (
           <button
             key={slide.id}

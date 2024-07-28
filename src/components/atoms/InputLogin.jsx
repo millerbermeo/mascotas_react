@@ -1,4 +1,3 @@
-// src/components/atoms/Input.js
 import React from 'react';
 
 const InputLogin = ({ type, placeholder, className }) => (

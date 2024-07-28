@@ -1,4 +1,3 @@
-// src/components/atoms/Image.js
 import React from 'react';
 
 const Image = ({ src, alt, className }) => (
