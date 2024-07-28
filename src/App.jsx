@@ -4,6 +4,9 @@ import { AnimatePresence } from 'framer-motion';
 import HomePage from './components/pages/HomePage';
 import PetsPage from './components/pages/PetsPage';
 import LoginPage from './components/pages/LoginPage';
+import DashboardPage from './components/pages/DashboardPage';
+
+
 
 
 
@@ -24,6 +27,7 @@ const RoutesWrapper = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/pets" element={<PetsPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
       </Routes>
     </AnimatePresence>
   );
