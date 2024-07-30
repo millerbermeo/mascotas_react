@@ -24,17 +24,19 @@ const Navbar = ({ brand, menuItems, onButtonClick }) => {
 
   return (
     <nav className={`z-10 p-4 flex justify-between items-center fixed w-full transition-colors duration-300 ${scrolled ? 'bg-sky-200 shadow-black' : 'bg-transparent'}`}>
-      <div><img className={`duration-300 transition-all ${scrolled ? 'static w-16 rounded-full' : 'absolute w-40 top-2'}`} src={logo} alt="" /></div>
+      <div className='w-72'><img className={`duration-300 transition-all ${scrolled ? 'static w-16 rounded-full' : 'absolute w-40 top-2'}`} src={logo} alt="" /></div>
       <NavMenu items={menuItems} />
       {/* <Button >
         Menu
       </Button> */}
 
-    <Link to="/login">
+  <div className='w-72 flex justify-end'>
+  <Link to="/login">
     <div className="ml-4 w-12 z-50 p-1 rounded-full ">
         <img src="admin.png" className='z-50' alt="" />
       </div>
     </Link>
+  </div>
     </nav>
   );
 };

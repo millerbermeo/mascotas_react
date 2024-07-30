@@ -14,8 +14,8 @@ const LoginContainer = () => (
       <p className="mb-4">If you are already a member, easily log in</p>
       <LoginForm />
       <div className="flex justify-between mt-4">
-        <a href="#" className="text-blue-500">Forgot your password?</a>
-        <a href="#" className="text-blue-500">Register</a>
+        {/* <a href="#" className="text-blue-500">Forgot your password?</a>
+        <a href="#" className="text-blue-500">Register</a> */}
       </div>
     </div>
     <div className="md:w-1/2 hidden md:block bg-blue-100 rounded-r">

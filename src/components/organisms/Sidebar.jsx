@@ -1,16 +1,15 @@
-// src/components/organisms/Sidebar.js
 import React from 'react';
 import { FaHome, FaUser, FaCog } from 'react-icons/fa';
 import MenuItem from '../molecules/MenuItem';
 
 const menuItems = [
-  { icon: FaHome, label: 'Home', to: '/' },
-  { icon: FaUser, label: 'Profile', to: '/profile' },
-  { icon: FaCog, label: 'Settings', to: '/settings' },
+  { icon: FaHome, label: 'Home', to: '/dashboard' },
+  { icon: FaUser, label: 'Adopopciones', to: '/adopciones' },
+  { icon: FaCog, label: 'Usuarios', to: '/usuarios' },
 ];
 
 const Sidebar = () => (
-  <div className="w-64 bg-[#FCFCFC] h-screen p-4">
+  <div className="w-64 bg-[#AEC6CF] h-screen shadow-lg p-4">
     <h2 className="text-2xl font-bold mb-4">Menu</h2>
     <nav>
       {menuItems.map((item, index) => (

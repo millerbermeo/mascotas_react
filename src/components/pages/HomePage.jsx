@@ -24,8 +24,8 @@ const HomePage = () => {
         <div className="flex-grow flex justify-start px-20 2xl:px-60 items-center h-screen p-4 relative duration-500 transition-all">
           <div className="w-full max-w-3xl text-center pr-20">
             <div className='relative'>
-              <h1 className="text-5xl text-navy font-bold mb-10 scale-110">Bienvendio a AdopMe</h1>
-              <img className='w-11 right-1 top-0 absolute' src="huella.png" alt="" />
+              <h1 className="text-5xl text-navy font-bold mb-10 scale-110">Bienvenido a AdopMe</h1>
+              <img className='w-11 right-0 top-0 absolute' src="huella.png" alt="" />
             </div>
             <p className="mb-8 text-gray-800 px-8 text-lg relative text">
               En AdopMe, creemos que todos los animales merecen un hogar lleno de amor y cuidados. Nuestro propósito es conectar a personas generosas como tú con mascotas que buscan una familia. Aquí, puedes dar en adopción a tus queridos compañeros para que encuentren un nuevo hogar, o bien, encontrar a ese amigo peludo que has estado buscando.

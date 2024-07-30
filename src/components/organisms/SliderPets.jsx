@@ -7,19 +7,19 @@ const SliderPets = () => {
       id: 1,
       image: 'slider1.jpeg',
       title: 'Hello world',
-      description: 'Carousel with TailwindCSS and React',
+      description: 'Carousel',
     },
     {
       id: 2,
       image: 'slider2.jpeg',
       title: 'Hello world',
-      description: 'Carousel with TailwindCSS and React',
+      description: 'Carousel',
     },
     {
       id: 3,
       image: 'slider3.jpeg',
       title: 'Hello world',
-      description: 'Carousel with TailwindCSS and React',
+      description: 'Carousel',
     },
     
     // Agrega más imágenes aquí si es necesario
