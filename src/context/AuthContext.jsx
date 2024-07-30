@@ -1,15 +1,14 @@
 import React, { createContext, useState, useEffect } from 'react';
 import axiosClient from '../utils/axiosClient';
 
-// Crear el contexto
 const AuthContext = createContext();
 
-// Proveedor de autenticación
 export const AuthProvider = ({ children }) => {
   const [authState, setAuthState] = useState({
     token: null,
     user: null,
     isAuthenticated: false,
+    loading: true, // Estado de carga inicial
   });
 
   useEffect(() => {
@@ -20,6 +19,14 @@ export const AuthProvider = ({ children }) => {
         token,
         user,
         isAuthenticated: true,
+        loading: false, // Carga completa
+      });
+    } else {
+      setAuthState({
+        token: null,
+        user: null,
+        isAuthenticated: false,
+        loading: false, // Carga completa
       });
     }
   }, []);
@@ -36,9 +43,10 @@ export const AuthProvider = ({ children }) => {
         token,
         user: { id, nombre, rol },
         isAuthenticated: true,
+        loading: false,
       });
 
-      return { id, nombre, rol }; // Devolver el usuario para manejar la navegación
+      return { id, nombre, rol };
     } catch (error) {
       console.error('Error logging in', error);
       throw error;
@@ -53,6 +61,7 @@ export const AuthProvider = ({ children }) => {
       token: null,
       user: null,
       isAuthenticated: false,
+      loading: false,
     });
   };
 
@@ -65,7 +74,6 @@ export const AuthProvider = ({ children }) => {
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
-// Hook personalizado para usar el contexto de autenticación
 export const useAuth = () => {
   const context = React.useContext(AuthContext);
   if (context === undefined) {

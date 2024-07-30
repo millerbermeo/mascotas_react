@@ -11,7 +11,6 @@ import PrivateRoute from './services/PrivateRoute';
 import AdopPage from './components/pages/AdopPage';
 import AdopcionPage from './components/pages/AdopcionPage';
 
-
 const App = () => {
   return (
     <AuthProvider>

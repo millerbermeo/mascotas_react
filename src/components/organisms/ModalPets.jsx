@@ -29,17 +29,17 @@ export const ModalPets = ({ item, children }) => {
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">{item.nombre}</ModalHeader>
+              <ModalHeader className="flex flex-col gap-1">{item.mascota_nombre}</ModalHeader>
               <ModalBody>
                 <div className="bg-white rounded-lg shadow-lg">
                   <div className="relative w-full h-64">
-                    <img src={`http://localhost:3000${item.imagen_url}`} alt={item.nombre} className="rounded-t-lg w-full h-full object-cover" />
+                    <img src={`http://localhost:3000${item.imagen_url}`} alt={item.mascota_nombre} className="rounded-t-lg w-full h-full object-cover" />
                     <div className="absolute bottom-2 right-2 bg-white p-2 rounded-full shadow-md">
                       <FaHeart className="text-red-500" />
                     </div>
                   </div>
                   <div className="w-full p-4">
-                    <Text className="text-lg font-bold text-gray-800">{item.nombre}</Text>
+                    <Text className="text-lg font-bold text-gray-800">{item.mascota_nombre}</Text>
                     <Text className="text-gray-600">{item.edad} años</Text>
                     <Text className="text-gray-600">{item.genero || 'N/A'}</Text>
                     <Text className="text-gray-600">{item.descripcion}</Text>

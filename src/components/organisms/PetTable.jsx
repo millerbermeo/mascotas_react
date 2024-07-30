@@ -45,7 +45,7 @@ const PetTable = () => {
   };
 
   const filteredData = data.filter(item =>
-    item.nombre.toLowerCase().includes(filterValue.toLowerCase())
+    item.mascota_nombre.toLowerCase().includes(filterValue.toLowerCase())
   );
 
   const startIndex = (page - 1) * rowsPerPage;
@@ -122,7 +122,7 @@ const PetTable = () => {
             {paginatedData.map(pet => (
               <TableRow key={pet.id}>
                 <TableCell>{pet.id}</TableCell>
-                <TableCell>{pet.nombre}</TableCell>
+                <TableCell>{pet.mascota_nombre}</TableCell>
                 <TableCell>{pet.edad}</TableCell>
                 <TableCell>{pet.genero || 'N/A'}</TableCell>
                 <TableCell>{pet.raza || 'N/A'}</TableCell>

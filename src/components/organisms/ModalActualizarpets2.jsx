@@ -25,7 +25,7 @@ const ModalActualizarPets2 = ({ fetchPets, item }) => {
     useEffect(() => {
         if (item) {
             setFormData({
-                nombre: item.nombre || '',
+                nombre: item.mascota_nombre || '',
                 edad: item.edad || '',
                 genero: item.genero === "macho" ? "1" : item.genero === "hembra" ? "2" : '',
                 raza: item.raza || '',
