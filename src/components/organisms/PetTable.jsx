@@ -112,7 +112,7 @@ const PetTable = () => {
             <TableColumn>GÉNERO</TableColumn>
             <TableColumn>RAZA</TableColumn>
             <TableColumn>ESTERILIZADO</TableColumn>
-            <TableColumn>CONTACTO</TableColumn>
+            {/* <TableColumn>CONTACTO</TableColumn> */}
             <TableColumn>DESCRIPCIÓN</TableColumn>
             <TableColumn>ESTADO</TableColumn>
             <TableColumn>IMAGEN</TableColumn>
@@ -127,7 +127,7 @@ const PetTable = () => {
                 <TableCell>{pet.genero || 'N/A'}</TableCell>
                 <TableCell>{pet.raza || 'N/A'}</TableCell>
                 <TableCell>{pet.esterilizado}</TableCell>
-                <TableCell>{pet.telefono}</TableCell>
+                {/* <TableCell>{pet.telefono}</TableCell> */}
                 <TableCell>{pet.descripcion}</TableCell>
                 <TableCell>{pet.estado}</TableCell>
                 <TableCell>
