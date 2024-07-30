@@ -6,7 +6,6 @@ import ModalActualizarPets2 from './ModalActualizarpets2';
 import BotonAdoptado from '../molecules/BotonAdoptado';
 import BotonDisponible from '../molecules/BotonDisponible';
 
-
 const PetTable = () => {
   const [data, setData] = useState([]);
   const [rowsPerPage, setRowsPerPage] = useState(6);
@@ -104,47 +103,49 @@ const PetTable = () => {
         </label>
       </div>
 
-      <Table className="z-0 printableTable" aria-label="Example static collection table">
-        <TableHeader>
-          <TableColumn>ID</TableColumn>
-          <TableColumn>NOMBRE</TableColumn>
-          <TableColumn>EDAD</TableColumn>
-          <TableColumn>GÉNERO</TableColumn>
-          <TableColumn>RAZA</TableColumn>
-          <TableColumn>ESTERILIZADO</TableColumn>
-          <TableColumn>CONTACTO</TableColumn>
-          <TableColumn>DESCRIPCIÓN</TableColumn>
-          <TableColumn>ESTADO</TableColumn>
-          <TableColumn>IMAGEN</TableColumn>
-          <TableColumn className='flex justify-center items-center'>ACTIONS</TableColumn>
-        </TableHeader>
-        <TableBody>
-          {paginatedData.map(pet => (
-            <TableRow key={pet.id}>
-              <TableCell>{pet.id}</TableCell>
-              <TableCell>{pet.nombre}</TableCell>
-              <TableCell>{pet.edad}</TableCell>
-              <TableCell>{pet.genero || 'N/A'}</TableCell>
-              <TableCell>{pet.raza || 'N/A'}</TableCell>
-              <TableCell>{pet.esterilizado}</TableCell>
-              <TableCell>{pet.telefono}</TableCell>
-              <TableCell>{pet.descripcion}</TableCell>
-              <TableCell>{pet.estado}</TableCell>
-              <TableCell>
-                <img src={`http://localhost:3000${pet.imagen_url}`} alt={pet.nombre} className="w-16 rounded-full h-16 object-cover" />
-              </TableCell>
-              <TableCell className='flex justify-center gap-2'>
-                <Button color="success" onPress={() => handleWhatsAppClick(pet)}>
-                  Contactar
-                </Button>
-                <ModalActualizarPets2  fetchPets={fetchData} item={pet}/>
-                <BotonDisponible id={pet.id} fetchPets={fetchData} />
-                <BotonAdoptado id={pet.id} fetchPets={fetchData} />
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+      <div className="overflow-x-auto">
+        <Table className="z-0 printableTable w-full min-w-max">
+          <TableHeader>
+            <TableColumn>ID</TableColumn>
+            <TableColumn>NOMBRE</TableColumn>
+            <TableColumn>EDAD</TableColumn>
+            <TableColumn>GÉNERO</TableColumn>
+            <TableColumn>RAZA</TableColumn>
+            <TableColumn>ESTERILIZADO</TableColumn>
+            <TableColumn>CONTACTO</TableColumn>
+            <TableColumn>DESCRIPCIÓN</TableColumn>
+            <TableColumn>ESTADO</TableColumn>
+            <TableColumn>IMAGEN</TableColumn>
+            <TableColumn className='flex justify-center items-center'>ACTIONS</TableColumn>
+          </TableHeader>
+          <TableBody>
+            {paginatedData.map(pet => (
+              <TableRow key={pet.id}>
+                <TableCell>{pet.id}</TableCell>
+                <TableCell>{pet.nombre}</TableCell>
+                <TableCell>{pet.edad}</TableCell>
+                <TableCell>{pet.genero || 'N/A'}</TableCell>
+                <TableCell>{pet.raza || 'N/A'}</TableCell>
+                <TableCell>{pet.esterilizado}</TableCell>
+                <TableCell>{pet.telefono}</TableCell>
+                <TableCell>{pet.descripcion}</TableCell>
+                <TableCell>{pet.estado}</TableCell>
+                <TableCell>
+                  <img src={`http://localhost:3000${pet.imagen_url}`} alt={pet.nombre} className="w-16 rounded-full h-16 object-cover" />
+                </TableCell>
+                <TableCell className='flex justify-center gap-2'>
+                  <Button color="success" onPress={() => handleWhatsAppClick(pet)}>
+                    Contactar
+                  </Button>
+                  <ModalActualizarPets2 fetchPets={fetchData} item={pet} />
+                  <BotonDisponible id={pet.id} fetchPets={fetchData} />
+                  <BotonAdoptado id={pet.id} fetchPets={fetchData} />
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
 
       <div className="py-2 px-2 flex justify-between my-2 items-center">
         <Pagination

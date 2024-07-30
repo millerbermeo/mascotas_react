@@ -12,7 +12,7 @@ const MainLayout2 = ({children}) => {
 
   return (
    <>
-    <div className='w-full max-w-full bg-[#AEC6CF]'>
+    <div className='w-full max-w-full min-h-screen bg-[#AEC6CF]'>
     <Navbar brand="AdopMe" menuItems={menuItems} />
         {children}
     </div>

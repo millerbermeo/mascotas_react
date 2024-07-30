@@ -9,7 +9,7 @@ const menuItems = [
 ];
 
 const Sidebar = () => (
-  <div className="w-64 bg-[#AEC6CF] h-screen shadow-lg p-4">
+  <div className="w-64 min-w-64 bg-[#AEC6CF] h-screen shadow-lg p-4">
     <h2 className="text-2xl font-bold mb-4">Menu</h2>
     <nav>
       {menuItems.map((item, index) => (

@@ -10,6 +10,7 @@ const LogoutButton = () => {
   const handleLogout = () => {
     logout();
     navigate('/pets');
+    window.location.reload();
   };
 
   return (

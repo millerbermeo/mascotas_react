@@ -55,7 +55,7 @@ export const ModalPets = ({ item, children }) => {
                   Close
                 </Button>
                 <Button color="primary" onPress={handleWhatsAppClick}>
-                  Enviar por WhatsApp
+                  WhatsApp
                 </Button>
               </ModalFooter>
             </>

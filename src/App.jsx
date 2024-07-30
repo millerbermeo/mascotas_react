@@ -8,6 +8,8 @@ import LoginPage from './components/pages/LoginPage';
 import DashboardPage from './components/pages/DashboardPage';
 import UserPage from './components/pages/UserPage';
 import PrivateRoute from './services/PrivateRoute';
+import AdopPage from './components/pages/AdopPage';
+import AdopcionPage from './components/pages/AdopcionPage';
 
 
 const App = () => {
@@ -29,8 +31,11 @@ const RoutesWrapper = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/pets" element={<PetsPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/adop" element={<AdopPage />} />
+
         <Route path="/dashboard" element={<PrivateRoute element={<DashboardPage />} />} />
         <Route path="/usuarios" element={<PrivateRoute element={<UserPage />} />} />
+        <Route path="/adopciones" element={<PrivateRoute element={<AdopcionPage />} />} />
       </Routes>
     </AnimatePresence>
   );
