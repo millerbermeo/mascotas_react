@@ -19,7 +19,7 @@ const PetsPage = () => {
   const fetchPets = async () => {
     try {
       const response = await axiosClient.get('/mascotas/listar');
-      const availablePets = response.data.filter(pet => pet.estado === 'disponible');
+      const availablePets = response.data.filter(pet => pet.estado == 'Disponible');
       setPets(availablePets);
     } catch (error) {
       console.error('Error fetching pets:', error);

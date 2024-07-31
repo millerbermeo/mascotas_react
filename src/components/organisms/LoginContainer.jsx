@@ -11,7 +11,7 @@ const LoginContainer = () => (
 
     <img src={logo} alt="" className='w-52 mx-auto'/>
       <h2 className="text-2xl font-bold mb-4">Login</h2>
-      <p className="mb-4">If you are already a member, easily log in</p>
+      <p className="mb-4">Inicia sesión en Adopme</p>
       <LoginForm />
       <div className="flex justify-between mt-4">
         {/* <a href="#" className="text-blue-500">Forgot your password?</a>

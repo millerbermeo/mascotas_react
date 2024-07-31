@@ -103,7 +103,7 @@ const ModalActualizarPets2 = ({ fetchPets, item }) => {
                                             required
                                         />
                                         <Input
-                                            type="number"
+                                            type="text"
                                             label="Edad"
                                             name="edad"
                                             value={formData.edad}

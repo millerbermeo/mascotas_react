@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Input } from "@nextui-org/input";
-import Button from '../atoms/Button';
+import {Button} from "@nextui-org/button";
 import { useAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
@@ -31,9 +31,16 @@ const LoginForm = () => {
     }
   };
 
+
+
+  const atras = () => {
+    navigate('/pets')
+  }
+
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <Input
+      size='lg'
         type="email"
         placeholder="Email"
         name="email"
@@ -41,13 +48,17 @@ const LoginForm = () => {
         onChange={handleChange}
       />
       <Input
+       size='lg'
         type="password"
         name="password"
         placeholder="Password"
         value={formValues.password}
         onChange={handleChange}
       />
-      <Button type="submit">Login</Button>
+<div className='flex gap-2'>
+<Button color='primary' type="submit">Login</Button>
+<Button  onClick={atras}>Atras</Button>
+</div>
     </form>
   );
 };

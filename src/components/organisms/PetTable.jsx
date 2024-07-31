@@ -5,12 +5,15 @@ import ModalRegistrarPets2 from './ModalRegistrarPets2';
 import ModalActualizarPets2 from './ModalActualizarpets2';
 import BotonAdoptado from '../molecules/BotonAdoptado';
 import BotonDisponible from '../molecules/BotonDisponible';
+import ModalRegistrarHistorial from './ModalRegistrarHistorial';
+import ModalListarHistorial from './ModalListarHistorial';
 
 const PetTable = () => {
   const [data, setData] = useState([]);
   const [rowsPerPage, setRowsPerPage] = useState(6);
   const [page, setPage] = useState(1);
   const [filterValue, setFilterValue] = useState('');
+  const [statusFilter, setStatusFilter] = useState('todos');
 
   const fetchData = async () => {
     try {
@@ -35,6 +38,11 @@ const PetTable = () => {
     setPage(1); // Reset page number when clearing search filter
   };
 
+  const onStatusFilterChange = (e) => {
+    setStatusFilter(e.target.value);
+    setPage(1); // Reset page number when changing status filter
+  };
+
   const onPageChange = (pageNumber) => {
     setPage(pageNumber);
   };
@@ -44,9 +52,9 @@ const PetTable = () => {
     setPage(1); // Reset page number when changing rows per page
   };
 
-  const filteredData = data.filter(item =>
-    item.mascota_nombre.toLowerCase().includes(filterValue.toLowerCase())
-  );
+  const filteredData = data
+    .filter(item => item.mascota_nombre.toLowerCase().includes(filterValue.toLowerCase()))
+    .filter(item => statusFilter === 'todos' || item.estado.toLowerCase() === statusFilter);
 
   const startIndex = (page - 1) * rowsPerPage;
   const endIndex = startIndex + rowsPerPage;
@@ -54,14 +62,7 @@ const PetTable = () => {
 
   const handleWhatsAppClick = (pet) => {
     const phoneNumber = pet.telefono;
-    const message = `¡Hola! \n\n` +
-                    `Me encantaría saber más sobre la adopción de esta adorable mascota:\n\n` +
-                    `Nombre: ${pet.nombre}\n` +
-                    `Edad: ${pet.edad} años\n` +
-                    `Género: ${pet.genero || 'N/A'}\n` +
-                    `Descripción: ${pet.descripcion}\n` +
-                    `Estado: ${pet.estado}\n\n` +
-                    `Estoy muy interesado en brindarle un hogar lleno de amor. ¿Podrías darme más detalles sobre el proceso de adopción? ¡Muchas gracias!`;
+    const message = `¡Hola! Soy el administrador de AdopMe y estoy aquí para asistirte con cualquier información que necesites sobre la adopción de nuestras mascotas. ¿Cómo puedo ayudarte?`;
     const encodedMessage = encodeURIComponent(message);
     const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
     window.open(whatsappLink, '_blank');
@@ -80,8 +81,17 @@ const PetTable = () => {
             onClear={onClear}
             onChange={onSearchChange}
           />
-          <div className="flex gap-1 mb-2 lg:mb-0">
-            {/* Puedes añadir botones para descargar CSV o Excel aquí */}
+          <div className="flex gap-3">
+            <select
+              className="bg-transparent outline-none text-default-400 text-small ml-2"
+              value={statusFilter}
+              onChange={onStatusFilterChange}
+            >
+              <option value="todos">Todos</option>
+              <option value="pendiente">Pendiente</option>
+              <option value="disponible">Disponible</option>
+              <option value="adoptado">Adoptado</option>
+            </select>
           </div>
         </div>
         <ModalRegistrarPets2 fetchPets={fetchData} />
@@ -103,8 +113,8 @@ const PetTable = () => {
         </label>
       </div>
 
-      <div className="overflow-x-auto">
-        <Table className="z-0 printableTable w-full min-w-max">
+      <div className="overflow-x-auto flex justify-center w-full">
+        <Table className="z-0 printableTable mx-auto w-full max-w-[90%] 2xl:max-w-full  overflow-x-auto">
           <TableHeader>
             <TableColumn>ID</TableColumn>
             <TableColumn>NOMBRE</TableColumn>
@@ -131,7 +141,7 @@ const PetTable = () => {
                 <TableCell>{pet.descripcion}</TableCell>
                 <TableCell>{pet.estado}</TableCell>
                 <TableCell>
-                  <img src={`http://localhost:3000${pet.imagen_url}`} alt={pet.nombre} className="w-16 rounded-full h-16 object-cover" />
+                  <img src={`http://localhost:3000${pet.imagen_url}`} alt={pet.mascota_nombre} className="w-16 rounded-full h-16 object-cover" />
                 </TableCell>
                 <TableCell className='flex justify-center gap-2'>
                   <Button color="success" onPress={() => handleWhatsAppClick(pet)}>
@@ -140,6 +150,12 @@ const PetTable = () => {
                   <ModalActualizarPets2 fetchPets={fetchData} item={pet} />
                   <BotonDisponible id={pet.id} fetchPets={fetchData} />
                   <BotonAdoptado id={pet.id} fetchPets={fetchData} />
+                  <div className='w-12 h-12 rounded-full bg-gray-200 flex justify-center items-center text-2xl'>
+                    <ModalRegistrarHistorial mascotaId={pet.id} />
+                  </div>
+                  <div className='w-12 h-12 rounded-full bg-gray-200 flex justify-center items-center text-2xl'>
+                    <ModalListarHistorial mascotaId={pet.id} />
+                  </div>
                 </TableCell>
               </TableRow>
             ))}

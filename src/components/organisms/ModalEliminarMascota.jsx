@@ -41,7 +41,7 @@ const ModalEliminarMascota = ({ mascotaId, fetchPets }) => {
 
   return (
     <>
-      <Button color="danger" className='w-full' onClick={onOpen}>Eliminar Mascota</Button>
+      <Button color="danger" className='w-full mt-3' onClick={onOpen}>Eliminar Mascota</Button>
       <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
         <ModalContent>
           {(onClose) => (

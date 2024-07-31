@@ -132,7 +132,7 @@ const ModalRegistrarPets = ({ fetchPets }) => {
                                             required
                                         />
                                         <Input
-                                            type="number"
+                                            type="text"
                                             label="Edad"
                                             name="edad"
                                             value={formData.edad}

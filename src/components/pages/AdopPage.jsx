@@ -39,7 +39,7 @@ const AdopPage = () => {
         <div className="flex-grow flex flex-col justify-start mt-20 items-center p-4">
           <div className="flex justify-between w-full px-40 gap-3 items-center mb-8">
             <div>
-              <h1 className="text-5xl font-bold text-darkBlue">Mascotas</h1>
+              <h1 className="text-5xl font-bold text-darkBlue">Mis Mascotas</h1>
             </div>
 
             <div className='flex items-center gap-3'>

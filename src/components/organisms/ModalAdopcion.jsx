@@ -2,18 +2,24 @@ import React, { useState, useEffect } from 'react';
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from '@nextui-org/react';
 import axiosClient from '../../utils/axiosClient';
 import Swal from 'sweetalert2';
+import Select from 'react-select';
 
 const ModalAdopcion = ({ mascotaId, fetchAdoptions }) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [usuarios, setUsuarios] = useState([]);
   const [usuarioId, setUsuarioId] = useState('');
   const [fechaAdopcion, setFechaAdopcion] = useState('');
+  const [ubicacion, setUbicacion] = useState(''); // Nuevo estado para ubicacion
 
   useEffect(() => {
     const fetchUsuarios = async () => {
       try {
         const response = await axiosClient.get('/usuarios/listar');
-        setUsuarios(response.data);
+        const usuariosData = response.data.map(usuario => ({
+          value: usuario.id,
+          label: `${usuario.nombre} | ${usuario.identificacion}`
+        }));
+        setUsuarios(usuariosData);
       } catch (error) {
         console.error('Error fetching usuarios:', error);
       }
@@ -28,6 +34,7 @@ const ModalAdopcion = ({ mascotaId, fetchAdoptions }) => {
         usuario_id: usuarioId,
         mascota_id: mascotaId,
         fecha_adopcion: fechaAdopcion,
+        ubicacion // Enviar ubicacion
       });
       fetchAdoptions();
       onOpenChange(false);
@@ -48,7 +55,7 @@ const ModalAdopcion = ({ mascotaId, fetchAdoptions }) => {
 
   return (
     <>
-      <Button className='my-3 mr-2 w-full' onClick={onOpen}>Dar en Adopción</Button>
+      <Button className='mt-3 mr-2 w-full' onClick={onOpen}>Dar en Adopción</Button>
       <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
         <ModalContent>
           {(onClose) => (
@@ -56,23 +63,26 @@ const ModalAdopcion = ({ mascotaId, fetchAdoptions }) => {
               <ModalHeader>Registrar Adopción</ModalHeader>
               <ModalBody>
                 <div className="flex flex-col gap-4">
-                  <select
+                  <Select
                     className="p-2 border rounded"
-                    value={usuarioId}
-                    onChange={(e) => setUsuarioId(e.target.value)}
-                  >
-                    <option value="">Seleccionar Usuario</option>
-                    {usuarios.map((usuario) => (
-                      <option key={usuario.id} value={usuario.id}>
-                        {usuario.nombre} {usuario.identificacion}
-                      </option>
-                    ))}
-                  </select>
+                    value={usuarios.find(option => option.value === usuarioId)}
+                    onChange={(selectedOption) => setUsuarioId(selectedOption ? selectedOption.value : '')}
+                    options={usuarios}
+                    placeholder="Seleccionar Usuario"
+                    isClearable
+                  />
                   <input
                     type="date"
                     className="p-2 border rounded"
                     value={fechaAdopcion}
                     onChange={(e) => setFechaAdopcion(e.target.value)}
+                  />
+                  <input
+                    type="text"
+                    className="p-2 border rounded"
+                    placeholder="Ubicación"
+                    value={ubicacion}
+                    onChange={(e) => setUbicacion(e.target.value)}
                   />
                 </div>
               </ModalBody>
